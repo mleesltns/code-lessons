@@ -1,0 +1,7 @@
+[
+  { "name": "Acme Corp", "plan": "pro", "seats": 25 },
+  { "name": "Widgets Inc", "plan": "free", "seats": 3 },
+  { "name": "Globex", "plan": "pro", "seats": 12 },
+  { "name": "Initech", "plan": "free", "seats": 1 },
+  { "name": "Umbrella LLC", "plan": "enterprise", "seats": 200 }
+]
