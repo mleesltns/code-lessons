@@ -1,9 +1,19 @@
-import { readFile } from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
 
 const data = await readFile('./customers.json', 'utf-8');
 const customers = JSON.parse(data);
 
-const proCustomers = customers.filter((c) => c.seats > 10);
+const enrichedCustomers = customers.map((c) => {
+  const isHighRisk = c.plan === 'free' && c.seats === 1;
+  return {
+    ...c,
+    renewalRisk: isHighRisk ? 'high' : 'low',
+  };
+});
 
-console.log('customers with more than 10 seats:');
-console.log(proCustomers);
+await writeFile(
+  './customers-enriched.json',
+  JSON.stringify(enrichedCustomers, null, 2)
+);
+
+console.log('Done! Check customers-enriched.json');

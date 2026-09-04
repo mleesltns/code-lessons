@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Acme Corp",
+    "plan": "pro",
+    "seats": 25,
+    "renewalRisk": "low"
+  },
+  {
+    "name": "Widgets Inc",
+    "plan": "free",
+    "seats": 3,
+    "renewalRisk": "low"
+  },
+  {
+    "name": "Globex",
+    "plan": "pro",
+    "seats": 12,
+    "renewalRisk": "low"
+  },
+  {
+    "name": "Initech",
+    "plan": "free",
+    "seats": 1,
+    "renewalRisk": "high"
+  },
+  {
+    "name": "Umbrella LLC",
+    "plan": "enterprise",
+    "seats": 200,
+    "renewalRisk": "low"
+  }
+]
