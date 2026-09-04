@@ -1,19 +1,19 @@
-import { readFile, writeFile } from 'fs/promises';
+import express from 'express';
+import { readFile } from 'fs/promises';
 
-const data = await readFile('./customers.json', 'utf-8');
-const customers = JSON.parse(data);
+const app = express();
+const PORT = 3000;
 
-const enrichedCustomers = customers.map((c) => {
-  const isHighRisk = c.plan === 'free' && c.seats === 1;
-  return {
-    ...c,
-    renewalRisk: isHighRisk ? 'high' : 'low',
-  };
+app.get('/', (req, res) => {
+  res.send('Hello from your first server!');
 });
 
-await writeFile(
-  './customers-enriched.json',
-  JSON.stringify(enrichedCustomers, null, 2)
-);
+app.get('/customers', async (req, res) => {
+  const data = await readFile('./customers.json', 'utf-8');
+  const customers = JSON.parse(data);
+  res.json(customers);
+});
 
-console.log('Done! Check customers-enriched.json');
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
